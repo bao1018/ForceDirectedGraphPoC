@@ -12,15 +12,17 @@
       }
 
       #graph-container {
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        top: 50px;
+        bottom: 10px;
+        left: 20%;
+        right: 300px;
         position: absolute;
+        border:1px solid #adadad;
       }
     </style>
   </head>
   <body>
+    <h1>Node Graph</h1>
     <div id="graph-container"></div>
     <!-- START SIGMA IMPORTS -->
     <script src="src/sigma.core.js"></script>
@@ -54,7 +56,7 @@
     <script src="src/misc/sigma.misc.bindEvents.js"></script>
     <script src="src/misc/sigma.misc.drawHovers.js"></script>
 
-    <script src="plugins/sigma.layout.forceAtlas2/sigma.layout.forceAtlas2.js"></script>
+    <script src="plugins/sigma.layout.forceAtlas2/sigma.layout.forceAtlas2PwC.js"></script>
     <script src="plugins/sigma.plugins.neighborhoods/sigma.plugins.neighborhoods.js"></script>
     <script src="main.js"></script>
   </body>
