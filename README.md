@@ -1,10 +1,10 @@
 Try different HTML canvas framework to render the node graph 
 
 Potential JS lib
-- SigmaJS
-- Arborjs
-- spriny (https://github.com/dhotson/springy)
-- ThreeJS (http://monkeyswithspoons.com/2012/09/protect-connected-node-graph-html5-canvas/, https://github.com/davidpiegza/Graph-Visualization/)
+- SigmaJS (Done)
+- Arborjs (Not start)
+- spriny (Not start) (https://github.com/dhotson/springy)
+- ThreeJS (Not start) (http://monkeyswithspoons.com/2012/09/protect-connected-node-graph-html5-canvas/, https://github.com/davidpiegza/Graph-Visualization/) 
 
 
 
