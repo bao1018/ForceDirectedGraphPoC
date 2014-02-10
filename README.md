@@ -4,7 +4,7 @@ Potential JS lib
 - SigmaJS
 - Arborjs
 - spriny (https://github.com/dhotson/springy)
-－ ThreeJS (http://monkeyswithspoons.com/2012/09/protect-connected-node-graph-html5-canvas/, https://github.com/davidpiegza/Graph-Visualization/)
+- ThreeJS (http://monkeyswithspoons.com/2012/09/protect-connected-node-graph-html5-canvas/, https://github.com/davidpiegza/Graph-Visualization/)
 
 
 
