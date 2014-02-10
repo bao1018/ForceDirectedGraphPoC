@@ -1,0 +1,34 @@
+<html>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script src="springy.js"></script>
+<script src="springyui.js"></script>
+<script>
+var graph = new Springy.Graph();
+
+function randRGB() {
+  return Math.floor(Math.random()*16777215).toString(16);
+}
+
+var root = graph.newNode({image: {src: 'img.png', width: 40, height:40}});
+var node1= graph.newNode({image: {src: 'img.png', width: 40, height:40}});
+var node2 = graph.newNode({image: {src: 'img.png', width: 40, height:40}});
+
+graph.newEdge(root, node1, {directional: false, color: '#ccc'});
+graph.newEdge(root, node2, {directional: false, color: '#ccc'});
+
+
+jQuery(function(){
+  var springy = window.springy = jQuery('#springydemo').springy({
+    graph: graph,
+    nodeSelected: function(node){
+      console.log('Node selected: ' + JSON.stringify(node.data));
+    },
+    repulsion: 150
+  });
+});
+</script>
+
+<canvas id="springydemo" width="640" height="480" />
+</body>
+</html>
