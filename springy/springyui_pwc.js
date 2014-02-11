@@ -105,6 +105,17 @@ jQuery.fn.springy = function(params) {
 		}
 	});
 
+	// Basic double click handler
+	jQuery(canvas).click(function(e) {
+		var pos = jQuery(this).offset();
+		var p = fromScreen({x: e.pageX - pos.left, y: e.pageY - pos.top});
+		selected = layout.nearest(p);
+		node = selected.node;
+		if (node && node.data && node.data.onclick) {
+			node.data.onclick(e, node);
+		}
+	});
+
 	jQuery(canvas).mousemove(function(e) {
 		var pos = jQuery(this).offset();
 		var p = fromScreen({x: e.pageX - pos.left, y: e.pageY - pos.top});
@@ -312,14 +323,14 @@ jQuery.fn.springy = function(params) {
 				ctx.fillStyle = "#FFFFFF";
 			}
 			// ctx.fillRect(s.x - boxWidth/2, s.y - boxHeight/2, boxWidth, boxHeight);
-//pwc customize
-     ctx.beginPath();
-     ctx.arc(s.x, s.y , contentWidth/2 ,0,2*Math.PI);
-      ctx.fillStyle = '#7AE969';
-      ctx.fill();
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = '#003300';
-      ctx.stroke();
+            //pwc customize
+            ctx.beginPath();
+            ctx.arc(s.x, s.y , contentWidth/2 ,0,2*Math.PI);
+            ctx.fillStyle = '#7AE969';
+            ctx.fill();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = '#003300';
+            ctx.stroke();
 
 			if (node.data.image == undefined) {
 				

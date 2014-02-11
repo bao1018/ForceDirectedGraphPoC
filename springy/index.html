@@ -16,30 +16,7 @@
 <script src="jquery-1.10.2.js"></script>
 <script src="springy.js"></script>
 <script src="springyui_pwc.js"></script>
-<script>
-var graph = new Springy.Graph();
-
-function randRGB() {
-  return Math.floor(Math.random()*16777215).toString(16);
-}
-var nodeSize = 30;
-var root = graph.newNode({image: {src: 'img.png', width: nodeSize, height: nodeSize}, label: 'root'});
-var node1= graph.newNode({image: {src: 'img.png', width: nodeSize, height: nodeSize }, label: 'node1'});
-var node2 = graph.newNode({image: {src: 'img.png', width: nodeSize, height: nodeSize}, label: 'node2'});
-
-graph.newEdge(root, node1, {directional: false, color: '#ccc'}); 
-graph.newEdge(root, node2, {directional: false, color: '#ccc'});
-
-jQuery(function(){
-  var springy = window.springy = jQuery('#springydemo').springy({
-    graph: graph,
-    nodeSelected: function(node){
-      console.log('Node selected: ' + JSON.stringify(node.data));
-    },
-    repulsion: 1500
-  });
-});
-</script>
+<script src="main.js"></script>
 <h1>Node Graph</h1>
 <canvas id="springydemo" width='1000' height='600'></canvas>
 </body>

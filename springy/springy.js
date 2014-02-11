@@ -263,6 +263,13 @@
 		this.notify();
 	};
 
+   Graph.prototype.forEachEdge = function(fn){
+     return this.edges.slice().forEach(fn);
+   };
+
+    Graph.prototype.forEachNode = function(fn){
+     return this.nodes.slice().forEach(fn);
+   };
 	/* Merge a list of nodes and edges into the current graph. eg.
 	var o = {
 		nodes: [
@@ -313,8 +320,7 @@
 		}, this);
 	};
 
-
-	Graph.prototype.addGraphListener = function(obj) {
+    Graph.prototype.addGraphListener = function(obj) {
 		this.eventListeners.push(obj);
 	};
 
