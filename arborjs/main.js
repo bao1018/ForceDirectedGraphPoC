@@ -10,7 +10,37 @@
   //   for (var i=0; i<len; i++) args.push("arguments["+i+"]")
   //   eval("console.log("+args.join(",")+")")
   // }  
-  
+  NodeDatabase = { "demos": { nodes : { halfviz:{color:'#a7af00', alpha:1},
+                                        atlas:{color:'#a7af00', alpha:1},
+                                        echolalia:{color:'#a7af00', alpha:1} 
+                                      },
+                              edges : { "demos" : { halfviz:{}, atlas:{}, echolalia:{} } }
+                            },
+                    "docs": { edges : { "docs" : { reference:{},introduction:{} } },
+                            nodes : { reference:{color:'#a7af00'},
+                                      introduction:{color:'#a7af00'}
+                                    }
+                          },
+                    "code": { edges : { "code" : { ".zip":{},".tar.gz":{},"github":{} } },
+                            nodes : {
+                                      github:{color:'#a7af00'},
+                                       ".zip":{color:'#a7af00'},
+                                       ".tar.gz":{color:'#a7af00'}
+                                    }
+                          }
+                  };
+  var EtrLoadNode = function(node, sys){
+    if (node.data.load_related == true)
+      return false
+    else {
+      var related_nodes = NodeDatabase[node.name]
+      console.log(related_nodes)
+      if(related_nodes){
+        sys.graft(related_nodes);
+        node.data.load_related = true 
+      };
+    }
+  }
   var Renderer = function(elt){
     var dom = $(elt)
     var canvas = dom.get(0)
@@ -196,6 +226,7 @@
               var center = arbor.Point(canvas.width/2+pos.left, canvas.height/2+pos.top);
               var p = sys.fromScreen(center);
               nearest.node.p = p;
+              EtrLoadNode(nearest.node, sys);
               that.switchSection(_section);
             }
             
@@ -358,36 +389,19 @@
     var theUI = {
       nodes:{"arbor.js":{color:"red", shape:"dot", alpha:1, radius: 30}, 
       
-             demos:{color:CLR.branch, shape:"dot", alpha:1}, 
-             halfviz:{color:CLR.demo, alpha:0, link:'/halfviz'},
-             atlas:{color:CLR.demo, alpha:0, link:'/atlas'},
-             echolalia:{color:CLR.demo, alpha:0, link:'/echolalia'},
+             "demos":{color:CLR.branch, shape:"dot", alpha:1}, 
+          
 
-             docs:{color:CLR.branch, shape:"dot", alpha:1}, 
-             reference:{color:CLR.doc, alpha:0, link:'#reference'},
-             introduction:{color:CLR.doc, alpha:0, link:'#introduction'},
+             "docs":{color:CLR.branch, shape:"dot", alpha:1}, 
+             
 
-             code:{color:CLR.branch, shape:"dot", alpha:1},
-             github:{color:CLR.code, alpha:0, link:'https://github.com/samizdatco/arbor'},
-             ".zip":{color:CLR.code, alpha:0, link:'/js/dist/arbor-v0.92.zip'},
-             ".tar.gz":{color:CLR.code, alpha:0, link:'/js/dist/arbor-v0.92.tar.gz'}
+             "code":{color:CLR.branch, shape:"dot", alpha:1},
             },
       edges:{
         "arbor.js":{
-          demos:{length:.8},
-          docs:{length:.8},
-          code:{length:.8}
-        },
-        demos:{halfviz:{},
-               atlas:{},
-               echolalia:{}
-        },
-        docs:{reference:{},
-              introduction:{}
-        },
-        code:{".zip":{},
-              ".tar.gz":{},
-              "github":{}
+          "demos":{length:.8},
+          "docs":{length:.8},
+          "code":{length:.8}
         }
       }
     }
