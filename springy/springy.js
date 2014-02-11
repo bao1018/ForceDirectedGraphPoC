@@ -150,6 +150,7 @@
 	};
 
 	Graph.prototype.newEdge = function(source, target, data) {
+		console.log('newEdge');
 		var edge = new Edge(this.nextEdgeId++, source, target, data);
 		this.addEdge(edge);
 		return edge;
